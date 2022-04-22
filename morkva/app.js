@@ -43,13 +43,34 @@ class MarkovMachine {
         const chain = this.makeChains();
         const chainKeys = Object.keys(chain);
         const len = chainKeys.length;
-        const randInt = Math.floor(Math.random * len)
+        const randInt = Math.floor(Math.random() * len);
+        let startingWord = chainKeys[randInt];
+        const wordList = [];
+        wordList.push(startingWord)
 
-        for(let i = 1; i < numWords + 1; i++) {
-            
+
+        for(let i = 1; i <= numWords; i++){
+            let startingWordList = chain[startingWord]
+            let wordLen = startingWordList.length;
+            let randomInt = Math.floor(Math.random() * wordLen)
+            let nextWord = startingWordList[randomInt]
+
+            if(startingWordList[randomInt] !== null) {
+                wordList.push (nextWord)
+                startingWord = nextWord;
+            }
+            else if(startingWordList[randomInt] !== null && i === numWords) {
+                wordList.push(null)
+            }
+            else if(startingWordList[randomInt] === null) {
+                startingWord = chainKeys[0];
+            }
         }
+
+        return wordList.join(" ")
+        
     }
-  }
+}
 
 //?----------------------------------------------------------
 

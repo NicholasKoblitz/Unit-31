@@ -24,7 +24,7 @@ describe("markavMachine.makeChains", () => {
 describe("markovMachine.makeText", () => {
     const newMarkov = new MarkovMachine("TEST THIS TASS TEST ME");
     test("should return  a string", () => {
-        expect(typeof newMarkov.makeText()).toBe("String")
+        expect(typeof newMarkov.makeText()).toBe("string")
     })
 })
     
