@@ -26,5 +26,8 @@ describe("markovMachine.makeText", () => {
     test("should return  a string", () => {
         expect(typeof newMarkov.makeText()).toBe("string")
     })
+    test("should return a length of input value", () => {
+        expect(newMarkov.makeText().split(" ").length).toEqual(100)
+    })
 })
     

@@ -49,26 +49,24 @@ class MarkovMachine {
         wordList.push(startingWord)
 
 
-        for(let i = 1; i <= numWords; i++){
+        for(let i = 1; i < numWords; i++){
+
             let startingWordList = chain[startingWord]
             let wordLen = startingWordList.length;
             let randomInt = Math.floor(Math.random() * wordLen)
             let nextWord = startingWordList[randomInt]
 
             if(startingWordList[randomInt] !== null) {
-                wordList.push (nextWord)
+                wordList.push(nextWord)
                 startingWord = nextWord;
             }
-            else if(startingWordList[randomInt] !== null && i === numWords) {
-                wordList.push(null)
-            }
             else if(startingWordList[randomInt] === null) {
+                wordList.push(chainKeys[0])
                 startingWord = chainKeys[0];
             }
         }
 
         return wordList.join(" ")
-        
     }
 }
 
